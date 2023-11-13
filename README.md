@@ -135,21 +135,47 @@ Explanation:
 2. Root Name Server
 3. IP Address
 4. Top Level Domain Name Server
-5. Autoritative Name Server
+5. Authoritative Name Server
 
 <details>
-<summary>💡 <b>Resources</b></summary>
+<summary><b>Answer</b></summary>
  <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q3-resolving-domain-requests/)
- 
-Further reading: 
- - https://datatracker.ietf.org/doc/html/rfc1035
- - https://www.liquidweb.com/kb/how-to-demystify-the-dns-process/
- - https://www.cloudflare.com/learning/dns/what-is-dns/
- - https://www.cloudflare.com/learning/dns/what-is-recursive-dns/
- 
+
+```
+- Browser sends request to [1] Recursive DNS Resolver
+- [1] Recursive DNS resolver queries [2] Root Name Server
+- [2] Root Name Server responds with [4] Top Level Domain Name Server IP address
+- [1] Recursive DNS Resolver queries [4] Top Level Domain Name Server
+- [4] Top Level Domain Name Server responds with [5] Authoritative Name Server IP address
+- [1] Recursive DNS Resolver queries [5] Authoritative Name Server
+- [5] Authoritative Name Server responds with website's [3] IP Address
+```
+
+Explanation:
+
+1. **Browser sends request to [1] Recursive DNS Resolver:**
+   - When you type a domain name (e.g., www.example.com) into your browser, the browser sends a DNS resolution request to a Recursive DNS Resolver.
+
+2. **[1] Recursive DNS resolver queries [2] Root Name Server:**
+   - The Recursive DNS Resolver queries the Root Name Server to obtain information about the Top-Level Domain (TLD) Name Server responsible for the domain.
+
+3. **[2] Root Name Server responds with [4] Top Level Domain Name Server IP address:**
+   - The Root Name Server responds with the IP address of the Top-Level Domain (TLD) Name Server responsible for the specific domain.
+
+4. **[1] Recursive DNS Resolver queries [4] Top Level Domain Name Server:**
+   - The Recursive DNS Resolver then queries the Top-Level Domain (TLD) Name Server to get information about the Authoritative Name Server responsible for the domain.
+
+5. **[4] Top Level Domain Name Server responds with [5] Authoritative Name Server IP address:**
+   - The Top-Level Domain (TLD) Name Server responds with the IP address of the Authoritative Name Server that has the specific domain's DNS records.
+
+6. **[1] Recursive DNS Resolver queries [5] Authoritative Name Server:**
+   - The Recursive DNS Resolver queries the Authoritative Name Server for the IP address associated with the domain.
+
+7. **[5] Authoritative Name Server responds with website's [3] IP Address:**
+   - Finally, the Authoritative Name Server responds with the IP address of the requested domain, allowing the Recursive DNS Resolver to provide this information to the browser.
+
+In summary, the Recursive DNS Resolver iteratively queries the necessary DNS servers, starting from the Root Name Server, then the Top-Level Domain (TLD) Name Server, and finally the Authoritative Name Server, until it obtains the IP address associated with the domain. This process allows the browser to connect to the correct server and retrieve the web content for the specified domain.
+
 </details>
 
 ---
