@@ -1,20 +1,13 @@
 <div align="center">
-  <img height="100" src="https://javascriptpatterns.vercel.app/fm-logo.png">
   <h1>Advanced Web Dev Quiz</h1>
 </div>
 
 ---
- 
-> This  repo is related to my [FrontendMasters course](https://frontendmasters.com/courses/web-dev-quiz/). <br /> You'll find the questions and additional resources to get a better understanding of the concepts.
-
-This **Advanced Web Dev Quiz** covers a wide range of the things web devs get to deal with on a daily basis. The goal is to (re)introduce you to certain concepts that you may have forgotten over the years or simply don't get exposed to that often 🙂 
+This **Advanced Web Dev Quiz** covers a wide range of the things web devs get to deal with on a daily basis. The goal is to (re)introduce you to certain concepts that you may have forgotten over the years or simply don't get exposed to that often 🙂
 
 Have fun, and hopefully you'll learn something new today! Good luck! 💪
 
-| ⚠️ This repo **does not contain the answers(!)**, only the questions and useful resources on the question's topic! <br /> To see the answers and watch visualized explanations for each question, **please watch the [FrontendMasters course](https://frontendmasters.com/courses/web-dev-quiz/)! 🙏**  |
-|---|
-
-</div>
+| ⚠️ To see the visualized explanations for each question, **please watch the [FrontendMasters course](https://frontendmasters.com/courses/web-dev-quiz/)! 🙏** |
 
 ---
 
@@ -57,24 +50,41 @@ Have fun, and hopefully you'll learn something new today! Good luck! 💪
 
 ### 1. Put the scripts in the right order of execution
 
-- A. `<script defer src="defer1.js" />` (loads in **300ms**)
-- B. `<script defer src="defer2.js" />` (loads in **200ms**)
-- C. `<script async src="async1.js" />` (loads in **300ms**)
+- A. `<script async src="async1.js" />` (loads in **300ms**)
+- B. `<script defer src="defer1.js" />` (loads in **200ms**)
+- C. `<script defer src="defer2.js" />` (loads in **300ms**)
 - D. `<script async src="async2.js" />` (loads in **50ms**)
 - E. `<script async defer src="asyncdefer1.js" />` (loads in **60ms**)
 
 <details>
-<summary>💡 <b>Resources</b></summary>
+<summary><b>Answer</b></summary>
  <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q1-async-defer-execution-order/)
- 
-Further reading: 
- - https://html.spec.whatwg.org/multipage/scripting.html#attr-script-async
- - https://javascript.info/script-async-defer
- - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
- 
+ The order of execution depends on whether the scripts are loaded using the "async" or "defer" attribute. Here is the correct order of execution:
+
+- D. `<script async src="async2.js" />` (loads in 50ms)
+- E. `<script async defer src="asyncdefer1.js" />` (loads in 60ms)
+- A. `<script async src="async1.js" />` (loads in 300ms)
+- B. `<script defer src="defer1.js" />` (loads in 200ms)
+- C. `<script defer src="defer2.js" />` (loads in 300ms)
+
+Explanation:
+
+- D. `<script async src="async2.js" />` (loads in 50ms)
+  - This script has the "async" attribute, so it will be loaded asynchronously(HTML parser will continue parsing HTML) and will execute as soon as it's downloaded. It loads in 50ms.
+
+- E. `<script async defer src="asyncdefer1.js" />` (loads in 60ms)
+  - This script has both "async" and "defer" attributes. It will be loaded asynchronously and will execute in the order it appears in the HTML. It loads in 60ms, which is faster than the deferred scripts.
+
+- A. `<script async src="async1.js" />` (loads in 300ms)
+  - This script has the "async" attribute, so it will be loaded asynchronously and will execute as soon as it's downloaded. It loads in 300ms.
+
+- B. `<script defer src="defer1.js" />` (loads in 200ms)
+  - This script has the "defer" attribute, meaning it will be loaded asynchronously but will wait for the HTML parsing to complete before executing. It loads in 200ms.
+
+- B. `<script defer src="defer2.js" />` (loads in 300ms)
+  - Similar to the previous script, it has the "defer" attribute. It loads in 300ms.
+
+Putting it all together, the correct order of execution is "D -> E -> A -> B -> C" based on the loading times and the attributes associated with each script.
 </details>
 
 ---
