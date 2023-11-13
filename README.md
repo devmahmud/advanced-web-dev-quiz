@@ -197,20 +197,38 @@ setTimeout(() => console.log(5));
 - E. `2` `4` `3` `1` `5`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
+<summary><b>Answer</b></summary>
  <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q4-call-stack-event-loop/)
- 
-Further reading: 
- - https://tc39.es/ecma262/#sec-promise-objects
- - https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
- - https://web.dev/promises/
- - https://javascript.info/promise-basics
- - https://javascript.info/microtask-queue
- 
+
+- **D. `4` `2` `1` `5` `3`**
+
+Explanation:
+
+![Event Loop](assets/event-loop.gif)
+
+1. `setTimeout(() => console.log(1));`: This is scheduled to run in a future tick of the event loop. It goes into the callback queue.
+
+2. `Promise.resolve().then(() => console.log(2));`: This promise is resolved immediately, and `console.log(2)` is scheduled as a microtask.
+
+3. `Promise.resolve().then(() => setTimeout(() => console.log(3)));`: This is resolved immediately, and the inner `setTimeout` is scheduled for a future tick. Both are put into the microtask queue.
+
+4. `new Promise(() => console.log(4));`: The executor function inside the promise is executed synchronously. Therefore, it immediately logs `4`.
+
+5. `setTimeout(() => console.log(5));`: This is scheduled to run in a future tick. It goes into the callback queue.
+
+Now, let's look at the order of execution:
+
+1. `console.log(4)` is executed immediately because the promise executor runs synchronously.
+
+2. **Microtasks:**
+   1. `console.log(2)` is executed (from the first round of the event loop).
+   2. `setTimeout(()=>console.log(3))` is scheduled as a microtask, and its callback is queued for a future tick.
+
+3. **Callback Queue (Task Queue/ Microtask queue):**
+   1. `console.log(1)` (from the second round of the event loop, scheduled by setTimeout).
+   2. `console.log(5)` (from the third round of the event loop, scheduled by setTimeout).
+   3. `console.log(3)` (the callback from the second microtask, invoked by the resolved promise).
+
 </details>
 
 ---
