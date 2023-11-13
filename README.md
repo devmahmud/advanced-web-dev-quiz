@@ -233,7 +233,7 @@ Now, let's look at the order of execution:
 
 ---
 
-### 5. Match the resource hints with their definitions 
+### 5. Match the resource hints with their definitions
 
 - A. `dns-prefetch`
 - B. `preconnect`
@@ -246,22 +246,34 @@ Now, let's look at the order of execution:
 4. requests non-critical resources in the background
 
 <details>
-<summary>💡 <b>Resources</b></summary>
+<summary><b>Answer</b></summary>
  <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q5-resource-hints/)
- 
-Further reading: 
- - https://html.spec.whatwg.org/#linkTypes
- - https://www.chromium.org/developers/design-documents/dns-prefetching/
- - https://www.smashingmagazine.com/2019/04/optimization-performance-resource-hints/
- - https://web.dev/preconnect-and-dns-prefetch/
- - https://csswizardry.com/2019/01/bandwidth-or-latency-when-to-optimise-which/
- - https://www.splunk.com/en_us/blog/learn/preconnect-resource-hints.html
- 
-</details>
 
+- A. `dns-prefetch`: **2.** performs domain name resolution in the background
+- B. `preconnect`: **3.** proactively performs DNS resolution and TCP/TLS handshake
+- C. `prefetch`: **4.** requests non-critical resources in the background
+- D. `preload`: **1.** prioritizes fetching of critical resources needed for the current navigation
+
+Explanation:
+
+![Network](assets/network.png)
+
+- A. `dns-prefetch`: This resource hint is used to perform domain name resolution in the background. It helps in resolving the DNS of a domain before the user clicks on a link, reducing the latency when the link is clicked.
+
+- B. `preconnect`: This resource hint is used to proactively perform DNS resolution, TCP handshake, and TLS negotiation with a remote server. It sets up early connections to important third-party origins, helping to reduce the latency when actual requests are made.
+
+- C. `prefetch`: This resource hint is used to request non-critical resources in the background. It fetches and caches resources that might be needed for future navigation, improving the overall performance by preloading resources that are likely to be used.
+
+- D. `preload`: This resource hint is used to prioritize the fetching of critical resources needed for the current navigation. It allows you to declare resources that should be fetched and cached as a high priority, ensuring that essential assets are available quickly when needed.
+
+In summary:
+
+- `dns-prefetch`: Performs domain name resolution in the background.
+- `preconnect`: Proactively performs DNS resolution, TCP handshake, and TLS negotiation.
+- `prefetch`: Requests non-critical resources in the background.
+- `preload`: Prioritizes fetching of critical resources needed for the current navigation.
+
+</details>
 
 ---
 
