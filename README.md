@@ -91,27 +91,30 @@ Putting it all together, the correct order of execution is "D -> E -> A -> B -> 
 
 ### 2. Which statements are true?
 
-- A. The render tree contains all elements from the DOM and CSSOM combined 
+- A. The render tree contains all elements from the DOM and CSSOM combined
 - B. Compositing is the process of separating layers based on z-index, which are then combined to form the final image displayed on the screen
 - C. The layout process assigns colors and images to the visual elements in the render tree
-- D. The composting process happens on the compositor thread 
+- D. The composting process happens on the compositor thread
 - E. Elements that aren't visible on the page, for example `display: hidden`, aren't part of the DOM tree
 
 <details>
-<summary>💡 <b>Resources</b></summary>
+<summary><b>Answer</b></summary>
  <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q2-rendering-pipeline-compositing/)
- 
-Further reading: 
- - https://www.chromium.org/developers/design-documents/graphics-and-skia/
- - https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/
- - https://chromium.googlesource.com/chromium/src/+/master/docs/how_cc_works.md
- - https://docs.google.com/presentation/d/1boPxbgNrTU0ddsc144rcXayGA_WF53k96imRH8Mp34Y
- - https://developer.chrome.com/blog/inside-browser-part4/
- - https://www.chromium.org/blink/
- 
+
+- D. The compositing process happens on the compositor thread.
+
+Explanation:
+
+- A. The render tree contains only the visible elements from the **DOM** and **CSSOM** combined. It does not include hidden or non-visible elements.
+
+- B. Compositing is the process of combining layers, taking into account properties like z-index to determine the stacking order of these layers. It doesn't inherently separate layers based on z-index; instead, it considers the stacking context and order when combining them to form the final image displayed on the screen.
+
+- C. The layout process involves determining the position and size of each element. Assigning colors and images to visual elements is part of the **painting process**.
+
+- D. Compositing typically happens on a separate thread called the compositor thread to improve performance.
+
+- E. Elements with `display: none` or similar properties are not part of the **render tree** and, consequently, are not visible on the page. But they are part of the **DOM tree**.
+
 </details>
 
 ---
