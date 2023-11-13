@@ -185,7 +185,7 @@ In summary, the Recursive DNS Resolver iteratively queries the necessary DNS ser
 ```js
 setTimeout(() => console.log(1));
 Promise.resolve().then(() => console.log(2));
-Promise.resolve().then(() => setTimeout(() => console.log(3));
+Promise.resolve().then(() => setTimeout(() => console.log(3)));
 new Promise(() => console.log(4));
 setTimeout(() => console.log(5));
 ```
@@ -222,9 +222,9 @@ Now, let's look at the order of execution:
 
 2. **Microtasks:**
    1. `console.log(2)` is executed (from the first round of the event loop).
-   2. `setTimeout(()=>console.log(3))` is scheduled as a microtask, and its callback is queued for a future tick.
+   2. `setTimeout(()=>console.log(3))` is scheduled as a microtask, and its callback is queued for a future tick as macrotask.
 
-3. **Callback Queue (Task Queue/ Microtask queue):**
+3. **Callback Queue (Task Queue/ Macrotask queue):**
    1. `console.log(1)` (from the second round of the event loop, scheduled by setTimeout).
    2. `console.log(5)` (from the third round of the event loop, scheduled by setTimeout).
    3. `console.log(3)` (the callback from the second microtask, invoked by the resolved promise).
