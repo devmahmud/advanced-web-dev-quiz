@@ -789,15 +789,15 @@ Explanation:
 
 ```js
 const promises = [
-   new Promise(res => setTimeout(() => res(1), 200),
-   new Promise(res => setTimeout(() => res(2), 100),
-   new Promise((_, rej) => setTimeout(() => rej(3), 100),
-   new Promise(res => setTimeout(() => res(4), 300)
+   new Promise(res => setTimeout(() => res(1), 200)),
+   new Promise(res => setTimeout(() => res(2), 100)),
+   new Promise((_, rej) => setTimeout(() => rej(3), 100)),
+   new Promise(res => setTimeout(() => res(4), 300))
 ];
 
 Promise[❓]
    .then(res => console.log("Result: ", res))
-   .catch(err => console.log("Error: ", err)
+   .catch(err => console.log("Error: ", err))
 ```
 
 - A. `all`
@@ -811,16 +811,69 @@ Promise[❓]
 4. `Result: 2`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q18-promise-methods/)
- 
-Further reading: 
- - https://javascript.info/promise-basics
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- A. `all` 2. `Error: 3`
+- B. `any` 1. `Result: 2`
+- C. `race` 4. `Result: 2`
+- D. `allSettled` 3. `Result: [{}, {}, {}, {}]`
+
+Explanation:
+
+- **Promise.all**
+  - `Promise.all` is used when you want to wait for all promises in an iterable to be resolved. If any of the promises are rejected, the entire `Promise.all` is rejected.
+
+  - `Promise.all(promises)` waits for all promises to settle, either resolving or rejecting.
+
+  - If all promises resolve, the `.then` block is executed, and the result is an array of all resolved values. In this case, the output will be "Result: [1, 2, 4]".
+
+  - If any promise in the array is rejected, the `.catch` block is executed, and the error is the value of the first rejected promise. In this case, the output will be "Error: 3".
+
+  So, using `Promise.all` in this example will result in the catch block being executed with the error "Error: 3" due to the third promise rejecting.
+
+- **Promise.any**
+  - `Promise.any` is used when you want to wait for the first promise in an iterable to be fulfilled. If all promises are rejected, it is rejected with an `AggregateError` containing all the rejection reasons.
+
+  - `Promise.any(promises)` waits for the first promise to fulfill. If multiple promises fulfill, it returns the value of the first fulfilled promise.
+
+  - If all promises are rejected, the `.catch` block is executed with an `AggregateError` containing all rejection reasons. In this case, the output will be "Error: AggregateError: All promises were rejected".
+
+  - If at least one promise is fulfilled, the `.then` block is executed with the value of the first fulfilled promise. In this case, the output will be "Result: 2", as the second promise resolves first.
+
+  So, using `Promise.any` in this example will result in the `.then` block being executed with the result "Result: 2".
+
+- **Promise.race**
+  - `Promise.race` is used when you want to wait for the first promise in an iterable to settle, either by resolving or rejecting.
+
+  - `Promise.race(promises)` waits for the first promise to settle. If the first promise resolves, the `.then` block is executed with the resolved value. If the first promise rejects, the `.catch` block is executed with the rejection reason.
+
+  - In this case, the 2nd promise resolve with the value `2` first. Therefore, the output will be "Result: 2".
+
+  So, using `Promise.race` in this example will result in the `.then` block being executed with the result "Result: 2".
+
+- **Promise.allSettled**
+  - `Promise.allSettled` is used when you want to wait for all promises in an iterable to settle, regardless of whether they resolve or reject.
+
+  - `Promise.allSettled(promises)` waits for all promises to settle. It returns an array of objects, each representing the outcome of a corresponding promise in the input array.
+
+  - The objects in the resulting array have the following shape: `{ status: 'fulfilled', value: <resolved value> }` for fulfilled promises and `{ status: 'rejected', reason: <rejection reason> }` for rejected promises.
+
+  - In this case, the output will be an array of objects representing the outcome of each promise. The output might look like this:
+
+    ```js
+    [
+      { status: 'fulfilled', value: 1 },
+      { status: 'fulfilled', value: 2 },
+      { status: 'rejected', reason: 3 },
+      { status: 'fulfilled', value: 4 }
+    ]
+    ```
+
+  - The `.then` block is then executed with the array of results.
+
+  So, using `Promise.allSettled` in this example will result in the `.then` block being executed with an array of objects representing the outcome of each promise.
+
 </details>
 
 ---
