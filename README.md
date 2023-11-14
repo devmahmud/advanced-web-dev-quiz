@@ -518,20 +518,25 @@ button.addEventListener("click", () => log("G"), true);
 - E. `A` `C` `G` `F` `D` `E`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q11-event-propagation/)
- 
-Further reading: 
- - https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-flow
- - https://javascript.info/bubbling-and-capturing
- - https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- E. `A` `C` `G` `F` `D` `E`
+
+Explanation:
+
+![Event Flow](assets/eventflow.svg)
+
+- A. `A` is logged when the click event reaches the outer element during the capturing phase (`true`).
+- C. `C` is logged when the click event reaches the inner element during the capturing phase (`true`).
+- G. `G` is logged when the click event reaches the button during the capturing phase (`true`).
+- F. `F` is logged when the click event reaches the button during the bubbling phase (`false` or omitted, defaulting to bubbling).
+- D. `D` is logged inside the click event handler for the `inner` element.
+- E. `E` is logged after `D` because `e.stopPropagation()` stops further propagation.
+
 </details>
 
---- 
+---
 
 ### 12. Order the CSS selectors by ascending specificity
 
