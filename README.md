@@ -703,18 +703,50 @@ Explanation:
 - E. The default `Referrer-Policy` is `no-referrer-when-downgrade`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q16-refer-policies)
- 
-Further reading: 
- - https://www.w3.org/TR/referrer-policy/
- - https://html.spec.whatwg.org/multipage/links.html#link-type-noopener
- - https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer
- - https://web.dev/referrer-best-practices/
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- B. `rel="noreferrer"` can be used to prevent the newly opened page from accessing the `window` object of the original page
+- D. `rel="noopener"` can be used to prevent tabnabbing
+
+Explanation:
+
+- A. `rel="noopener"`: When using `window.open()` or a similar method to open a new window or tab, using `rel="noopener"` prevents the newly opened page from being able to access the `window` object of the original page. This is a security measure to mitigate potential security risks.
+
+```html
+<a
+  target="_blank"
+  rel="noopener"
+  href="https://www.otherwebsite.com/learn"
+/>
+
+<!-- This will ensure -->
+> window.opener
+null
+```
+
+- B. `rel="noreferrer"` prevents the browser from sending a referrer header when navigating to the linked resource, it also prevent the newly opened page from accessing the `window` object of the original page. It implicitly adds `noopener`
+
+```html
+<a
+  target="_blank"
+  rel="noreferrer"
+  href="https://www.otherwebsite.com/learn"
+/>
+
+<!-- This will ensure -->
+> document.referrer
+""
+```
+
+- C. Both `rel="noopener"` and `rel="noreferrer"` can be used with both HTTP and HTTPS.
+
+- D. `rel="noopener"` is a security measure to prevent tabnabbing, where a newly opened page can navigate the original page to a malicious URL.
+
+- E. The default `Referrer-Policy` is `no-referrer`, not `no-referrer-when-downgrade`.
+
+> It's always good to use both noreferrer and noopener**
+
 </details>
 
 ---
