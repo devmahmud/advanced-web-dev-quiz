@@ -548,17 +548,22 @@ Explanation:
 - F. `h1.large-text#title`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q12-css-specificity/)
- 
-Further reading: 
- - https://www.w3.org/TR/2018/REC-selectors-3-20181106/#specificity
- - https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
- - https://specificity.keegan.st/
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- **F -> E -> D -> A -> B -> C**
+
+Explanation:
+
+![Specificity](assets/specificity.svg)
+
+1. F. `h1.large-text#title` (Specificity: 0-1-1-1)
+2. E. `h1.large-text[id="title"]` (Specificity: 0-0-2-1)
+3. D. `.large-text:nth-child(1)` (Specificity: 0-0-2-0)
+4. A. `div h1.large-text::before` (Specificity: 0-0-1-3)
+5. B. `div h1:first-child` (Specificity: 0-0-1-2)
+6. C. `h1:not(.small-text)` (Specificity: 0-0-1-1)
+
 </details>
 
 ---
