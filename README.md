@@ -368,17 +368,27 @@ Explanation:
 5. prevents caching on shared caches
 
 <details>
-<summary>💡 <b>Resources</b></summary>
+<summary><b>Answer</b></summary>
  <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q8-cache-directives/)
- 
-Further reading: 
- - https://www.rfc-editor.org/rfc/rfc9111
- - https://www.keycdn.com/blog/http-cache-headers
- - https://www.cloudflare.com/learning/cdn/glossary/what-is-cache-control/
- 
+
+- A. `no-cache`: **4.** validates a cached response with the origin server before using it, even if it is still fresh
+- B. `must-revalidate`: **1.** validates a stale response with the origin server before using it
+- C. `no-store`: **3.** doesn't cache any part of the request or response
+- D. `private`: **5.** prevents caching on shared caches
+- E. `stale-while-revalidate`: **2.** serves stale content while validating the cached response with the origin server
+
+Explanation:
+
+- A. `no-cache`: This directive indicates that a cached response must be validated with the origin server before it is used, even if the cached response is still considered fresh. It doesn't mean that the resource won't be cached; instead, it requires validation before reuse.
+
+- B. `must-revalidate`: This directive requires that a cached response, even if stale, must be revalidated with the origin server before it is used. If the validation fails, the cache must fetch the resource from the server.
+
+- C. `no-store`: This directive instructs caches (both private and shared) not to store any part of the request or response. The content must be obtained from the origin server for every request.
+
+- D. `private`: This directive indicates that the response is intended for a single user and should not be stored in shared caches. It is specific to a particular user and is typically used for sensitive information.
+
+- E. `stale-while-revalidate`: This is an extension to the Cache-Control header. It allows the serving of stale content to the user while asynchronously revalidating the cache in the background. It helps improve performance by not making the user wait for a new response.
+
 </details>
 
 ---
