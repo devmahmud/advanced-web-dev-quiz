@@ -769,19 +769,18 @@ const it = generatorFunc();
 - D. `it.next()` `it.next()`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q17-generators/)
- 
-Further reading: 
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
- - https://javascript.info/generators
- - https://exploringjs.com/es6/ch_iteration.html
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
- - https://blog.logrocket.com/javascript-iterators-and-generators-a-complete-guide/
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- C. `it.next()` `it.next("My input!")`
+
+Explanation:
+
+![Generator](assets/generator.svg)
+
+1. `it.next()`: The generator starts executing until it encounters the first `yield` statement and pauses, outputting `"My input!"`.
+2. `it.next("My input!")`: Resumes the generator execution, and the value passed to the generator (`"My input!"`) becomes the result of the previous `yield` expression. The `console.log("In log:", result);` statement is executed, logging "In log: My input!".
+
 </details>
 
 ---
