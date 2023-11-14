@@ -602,6 +602,8 @@ Explanation:
 
 - D. `[...userTokenMap]` returns an array of `userTokenMap` entries: This statement is incorrect. `WeakMap` is not iterable, so spreading it directly will result in an error.
 
+**Note:** For `Map`, it won't be garbage collected, because `Map` will have strong reference to the `user` object.
+
 </details>
 
 ---
@@ -623,15 +625,32 @@ Explanation:
 6. the stability of a webpage's layout, or the unexpected layout shifts that occur on a webpage as it loads.
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q14-web-vitals//)
- 
-Further reading: 
- - https://web.dev/metrics/
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- A. TTFB: **4.** the time it takes for the server to respond to a request and start sending data back to the client
+- B. FID: **1.** the time it takes for a webpage to respond to a user's first interaction.
+- C. TTI: **5.** the time it takes for a webpage to be fully loaded and responsive to user input.
+- D. TBT: **3.** the average time it takes for a webpage to update its visuals after a user interacts with it.
+- E. CLS: **6.** the stability of a webpage's layout, or the unexpected layout shifts that occur on a webpage as it loads.
+- F. INP: **2.** the time that the main thread is blocked from responding to user input.
+
+Explanation:
+
+![Web Vitals](assets/web-vitals.jpg)
+
+- A. TTFB (Time To First Byte): **4.** the time it takes for the server to respond to a request and start sending data back to the client. TTFB is a crucial metric for measuring server responsiveness.
+
+- B. FID (First Input Delay): **1.** the time it takes for a webpage to respond to a user's first interaction. FID measures the delay between a user's first interaction (clicking a button, selecting a menu item, etc.) and the browser's response to that interaction.
+
+- C. TTI (Time To Interactive): **5.** the time it takes for a webpage to be fully loaded and responsive to user input. TTI measures when the main content is loaded and when the page becomes interactive for users.
+
+- D. TBT (Total Blocking Time): **3.** the average time it takes for a webpage to update its visuals after a user interacts with it. TBT is a measure of the time during which the main thread is blocked, preventing the browser from responding to user input.
+
+- E. CLS (Cumulative Layout Shift): **6.** the stability of a webpage's layout or the unexpected layout shifts that occur on a webpage as it loads. CLS measures how much the page layout visually shifts during the loading process. `CLS = Distance Fraction x Impact Fraction`
+
+- F. INP (Input Timing): **2.** the time that the main thread is blocked from responding to user input. INP measures the time when the main thread is busy with tasks that can block user input.
+
 </details>
 
 ---
