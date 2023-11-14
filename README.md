@@ -671,17 +671,25 @@ default-src "none"; script-src "self"; img-src "self" example.com; style-src fon
 - H. `<video src="https://videos.example.com/..."></video>`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q15-content-security-policy-csp-header)
- 
-Further reading: 
- - https://content-security-policy.com/
- - https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
- - https://web.dev/csp/
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- A. `<script src="/js/app.js"></script>`
+- G. `<link rel="stylesheet" href="https://fonts.googleapis.com..>`
+
+Explanation:
+
+![CSP](assets/csp.jpg)
+
+- A. `<script src="/js/app.js"></script>`: Allowed (`script-src "self"` allows scripts from the same origin).
+- B. `fetch("https://api.website.com/data")`: Not allowed (`default-src "none"` doesn't allow any resources by default).
+- C. `@font-face { url("fonts/my-font.woff") }`: Not allowed (`font-src fonts.gstatic.com` only allows fonts from `fonts.gstatic.com`).
+- D. `<img src="data:image/svg+xml;..." />`: Not allowed (`img-src "self" example.com` allows images from the same origin or `example.com`).
+- E. `<style>body { font-family: 'Roboto' }</style>`: Not allowed (`style-src fonts.googleapis.com` allows styles from `fonts.googleapis.com`).
+- F. `<iframe src="https://embed.example.com"></iframe>`: Not allowed (`default-src "none"` doesn't allow any iframes by default).
+- G. `<link rel="stylesheet" href="https://fonts.googleapis.com..>`: Allowed (`style-src fonts.googleapis.com` allows styles from `fonts.googleapis.com`).
+- H. `<video src="https://videos.example.com/..."></video>`: Not allowed (`default-src "none"` doesn't allow any videos by default).
+
 </details>
 
 ---
