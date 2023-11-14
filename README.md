@@ -418,19 +418,23 @@ obj2 = null;
 - D. `obj1` and `obj2` can be garbage collected during the next garbage collection cycle
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q9-garbage-collection/)
- 
-Further reading: 
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_management
- - https://javascript.info/garbage-collection
- - https://github.com/thlorenz/v8-perf/blob/master/gc.md
- - https://medium.com/@mmoshikoo/garbage-collector-in-v8-engine-1c582399837
- 
- 
+<summary><b>Answer</b></summary>
+<br />
+
+**D. `obj1` and `obj2` can be garbage collected during the next garbage collection cycle**
+
+Explanation:
+
+In JavaScript, when an object is no longer reachable or referenced, it becomes eligible for garbage collection. In this code block:
+
+1. `obj1` and `obj2` are initially assigned objects created by the `addMember` function.
+2. Both `obj1` and `obj2` have a circular reference, as `obj1.friend` points to `obj2` and `obj2.friend` points to `obj1`.
+3. When `obj1` and `obj2` are set to `null`, there are no direct references to the objects they were pointing to.
+4. However, since there is a circular reference between the objects themselves, the garbage collector needs to identify and break the circular reference to determine that the objects are unreachable.
+
+JavaScript engines use automatic garbage collection to identify and collect unreachable objects. The exact timing of garbage collection is implementation-specific and depends on the JavaScript engine. Generally, it occurs during the next garbage collection cycle.
+
+So, `obj1` and `obj2` can be garbage collected during the next garbage collection cycle, breaking the circular reference and freeing up the memory.
 </details>
 
 ---
