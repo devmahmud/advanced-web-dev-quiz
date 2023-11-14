@@ -379,6 +379,8 @@ Explanation:
 
 Explanation:
 
+![Cache flowchart](assets/cache-flowchart.png)
+
 - A. `no-cache`: This directive indicates that a cached response must be validated with the origin server before it is used, even if the cached response is still considered fresh. It doesn't mean that the resource won't be cached; instead, it requires validation before reuse.
 
 - B. `must-revalidate`: This directive requires that a cached response, even if stale, must be revalidated with the origin server before it is used. If the validation fails, the cache must fetch the resource from the server.
@@ -407,7 +409,7 @@ obj1.friend = obj2;
 obj2.friend = obj1;
 
 obj1 = null;
-obj2 = null;
+obj2 = null;  
 ```
 
 - A. `obj1` and `obj2` cannot be garbage collected, leading to a memory leak
