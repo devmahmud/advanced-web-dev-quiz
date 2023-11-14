@@ -587,17 +587,21 @@ userTokenMap.set(user, "secret_token");
 - D. `[...userTokenMap]` returns an array of `userTokenMap` entries
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q13-weakmap/)
- 
-Further reading: 
- - https://read262.netlify.app/keyed-collections/weakmap-objects/
- - https://javascript.info/weakmap-weakset
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- C. If the user object is set to `null`, its `userTokenMap`  entry can be be garbage collected.
+
+Explanation:
+
+- A. `userTokenMap` implements the iterator protocol: This statement is incorrect. `WeakMap` does not implement the iterator protocol.
+
+- B. When setting `user` to `null`, `userTokenMap` returns `0`: This statement is incorrect. Setting an object to `null` does not return a value from `WeakMap`.
+
+- C. If the `user` object is set to `null`, its `userTokenMap` entry can be garbage collected: This statement is correct. If there are no other references to the `user` object, both the key-value pair in `userTokenMap` and the `user` object itself can be garbage collected.
+
+- D. `[...userTokenMap]` returns an array of `userTokenMap` entries: This statement is incorrect. `WeakMap` is not iterable, so spreading it directly will result in an error.
+
 </details>
 
 ---
