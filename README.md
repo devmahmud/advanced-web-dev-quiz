@@ -878,7 +878,7 @@ Explanation:
 
 ---
 
-### 19. Which of the following values will always make your page ineligible for bfcache?
+### 19. Which of the following values will always make your page ineligible for bfcache (back/forward cache)?
 
 - A. `unload`
 - B. `pagehide`
@@ -888,17 +888,25 @@ Explanation:
 - F. None of the above
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q19-back-forward-cache/)
- 
-Further reading: 
- - https://web.dev/bfcache/
- - https://www.smashingmagazine.com/2022/05/performance-game-changer-back-forward-cache/
- - https://nitropack.io/blog/post/back-forward-cache
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- A. `unload`
+
+Explanation:
+
+Back/Forward cache (bfcache), also known as session history cache, is a browser optimization mechanism that allows web pages to be retained in the browser's cache when users navigate away and then return using the back or forward buttons.
+
+Key points about bfcache:
+
+1. **Caching State**: When a user navigates away from a page, the current page's state, including JavaScript variables and the Document Object Model (DOM), is cached.
+
+2. **Fast Navigation**: When the user goes back or forward, instead of reloading the page from the server, the browser retrieves the cached page state, resulting in faster navigation.
+
+3. **Ineligibility Conditions**: Certain conditions, such as using specific events like `unload`, or `onbeforeunload` (Firefox), can make a page ineligible for back/forward cache. This is because these events suggest that the page's state might not be suitable for caching.
+
+4. **Improved User Experience**: Bfcache enhances the user experience by providing faster and smoother transitions between pages, especially when users navigate backward or forward in their browsing history.
+
 </details>
 
 ---
