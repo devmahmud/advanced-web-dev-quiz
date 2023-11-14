@@ -924,22 +924,25 @@ Key points about bfcache:
 4. allows attackers to intercept and modify communication between two parties without their knowledge
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q20-front-end-security/)
- 
-Further reading: 
- - https://owasp.org/www-community/attacks/xss/
- - https://owasp.org/www-community/attacks/csrf
- - https://owasp.org/www-community/attacks/Clickjacking
- - https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/
- - https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html
-- https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
- 
-</details>
+<summary><b>Answer</b></summary>
+<br />
 
+- A. XSS: 1. allows attackers to inject malicious scripts into web pages viewed by others
+- B. CSRF: 3. tricks users into executing unwanted actions by exploiting their authenticated session
+- C. UI Redressing: 2. tricks users into interacting with disguised or hidden elements
+- D. MITM: 4. allows attackers to intercept and modify communication between two parties without their knowledge
+
+Explanation:
+
+- A. **XSS (Cross-Site Scripting)**: This is a security vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users. These scripts can be executed by the victim's browser, leading to actions like stealing user sessions, personal information, or performing actions on behalf of the user without their consent.
+
+- B. **CSRF (Cross-Site Request Forgery)**: CSRF is an attack that tricks users into executing unwanted actions on a web application where they are authenticated. The attacker crafts a malicious request, and if the user is authenticated and has the necessary privileges, the request may be executed on their behalf without their knowledge.
+
+- C. **UI Redressing**: Also known as Clickjacking, UI Redressing tricks users into interacting with disguised or hidden elements by overlaying them on top of seemingly harmless content. This technique deceives users into clicking on elements that perform unintended actions, potentially leading to security compromises.
+
+- D. **MITM (Man-in-the-Middle)**: In a Man-in-the-Middle attack, an attacker intercepts and possibly alters the communication between two parties without their knowledge. This can occur in various forms, such as eavesdropping on unsecured Wi-Fi networks or intercepting data between a user and a website. The attacker can read, modify, or inject new data into the communication.
+
+</details>
 
 ---
 
