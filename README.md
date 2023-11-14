@@ -448,23 +448,45 @@ So, `obj1` and `obj2` can be garbage collected during the next garbage collectio
 - E. `transform`: Paint, Composite
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q10-animation-cost/)
- 
-Further reading: 
- - https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/
- - https://developer.chrome.com/blog/inside-browser-part3/
- - https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/
- - https://web.dev/avoid-large-complex-layouts-and-layout-thrashing/
- - https://developer.chrome.com/blog/hardware-accelerated-animations/
- 
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- A. `width`: Layout, Paint, Composite
+- D. `left`: Layout, Paint, Composite
+
+Explanation:
+
+- A. `width`: **Layout, Paint, Composite**
+  - **Layout (Reflow):** Changing the width of an element affects its box model, and a reflow is triggered to recalculate the layout.
+  - **Paint (Repaint):** The change in width may require repainting the affected area of the element.
+  - **Composite:** After layout and paint, the rendered layers are composited to display the final result.
+
+- B. `opacity`: **Composite**
+  - **Composite:** Changing the opacity of an element often doesn't require a repaint, but the compositor can directly blend the element with the underlying layers.
+
+- C. `background-image`: **Paint, Composite**
+  - **Paint (Repaint):** If a change in the background image affects the appearance of the element, it may require repainting.
+  - **Composite:** After painting, the rendered layers are composited to display the final result.
+
+- D. `left`: **Layout, Paint, Composite**
+  - **Layout (Reflow):** Adjusting the left position of an element affects its positioning in the layout, triggering a reflow.
+  - **Paint (Repaint):** Repainting may be necessary if the left position change affects the appearance of the element.
+  - **Composite:** After layout and paint, the rendered layers are composited to display the final result.
+
+- E. `transform`: **Composite**
+  - **Composite:** Transformations like scaling, rotation, etc., are often handled directly by the compositor without the need for a repaint.
+
+In summary:
+
+- A. `width`: **Layout, Paint, Composite**
+- B. `opacity`: **Composite**
+- C. `background-image`: **Paint, Composite**
+- D. `left`: **Layout, Paint, Composite**
+- E. `transform`: **Composite**
+
 </details>
 
---- 
+---
 
 ### 11. What gets logged when clicking button?
 
