@@ -297,15 +297,20 @@ console.log(member2);
 - D. `{ name: "Sarah", address: { street: "102 Main St" }}`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
+<summary><b>Answer</b></summary>
  <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q6-object-reference-destructuring/)
- 
-Further reading: 
- - https://developer.mozilla.org/en-US/docs/Glossary/Shallow_copy
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+
+**B. `{ name: "Jane", address: { street: "102 Main St" }}`**
+
+Explanation:
+
+<img src="assets/reference-destructuring.png" width="600px">
+
+1. `member` has a nested object `address`.
+2. `member2` is created using the spread operator, performing a shallow copy.
+3. Changing `member.address.street` also affects `member2.address.street` because it's a shallow copy.
+4. Changing `member.name` doesn't affect `member2.name` since it's a primitive property, and the spread operator creates a new reference for primitive types.
+
 </details>
 
 ---
