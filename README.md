@@ -325,19 +325,31 @@ Explanation:
 - F. `domInteractive`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
+<summary><b>Answer</b></summary>
  <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q7-performancenavigationtiming/)
- 
-Further reading: 
- - https://www.w3.org/TR/navigation-timing-2/
- - https://developer.mozilla.org/en-US/docs/Web/Performance/Navigation_and_resource_timings
-- https://web.dev/navigation-and-resource-timing/
- 
-</details>
 
+- D. `fetchStart`
+- E. `connectEnd`
+- F. `domInteractive`
+- C. `domContentLoadedEventStart`
+- B. `domComplete`
+- A. `loadEventStart`
+
+Explanation:
+
+1. **D. `fetchStart`**: This marks the beginning of the navigation process when the browser starts fetching the resource. It represents the start time of the navigation.
+
+2. **E. `connectEnd`**: This is the time when the last byte of the response is received or the connection is closed. It indicates the end of the connection phase in the navigation.
+
+3. **F. `domInteractive`**: This marks the point in time when the HTML document has been fully loaded and parsed, and the browser begins loading sub-resources like scripts and stylesheets. It is an important milestone in the loading process.
+
+4. **C. `domContentLoadedEventStart`**: This is the time when the DOM content is fully loaded and parsed, and the DOMContentLoaded event begins. This event is fired when the initial HTML document has been completely loaded and parsed without waiting for stylesheets, images, and subframes to finish loading.
+
+5. **B. `domComplete`**: This represents the time when the HTML document has been fully loaded and parsed, and all sub-resources like images and stylesheets have finished loading. It marks the point when the `load` event can be fired.
+
+6. **A. `loadEventStart`**: This is the time when the load event for the page is fired. It signifies that all resources on the page, including images and scripts, have been loaded.
+
+</details>
 
 ---
 
