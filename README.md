@@ -1338,7 +1338,7 @@ Explanation:
 - A. HTTP/2 allows multiple requests and responses concurrently over a single TCP connection
 - B. HTTP/3 can only be used with HTTPS
 - C. HTTP/2 is backward compatible with HTTP/1.1
-- D. HTTP/1.0 requires multiple TCP connections to process multiple requests simultaneously
+- D. HTTP/1.1 requires multiple TCP connections to process multiple requests simultaneously
 
 <details>
 <summary><b>Answer</b></summary>
@@ -1360,9 +1360,9 @@ All of them are correct.
 
   Explanation: HTTP/2 is designed to be backward compatible with HTTP/1.1. This means that if a client or server does not support HTTP/2, the communication can fall back to using HTTP/1.1 without issues.
 
-- D. HTTP/1.0 requires multiple TCP connections to process multiple requests simultaneously.
+- D. HTTP/1.1 requires multiple TCP connections to process multiple requests simultaneously.
 
-  Explanation: In HTTP/1.0, each request typically requires a separate TCP connection. This can lead to inefficiencies, especially when many small resources need to be loaded, as each connection has its associated overhead. In contrast, HTTP/2's multiplexing allows multiple requests to be sent concurrently over a single connection, improving performance.
+  Explanation: In HTTP/1.1, you cannot send multiple requests at the same time.
 
 </details>
 
