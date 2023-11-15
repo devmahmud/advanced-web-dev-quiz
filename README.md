@@ -1338,19 +1338,31 @@ Explanation:
 - A. HTTP/2 allows multiple requests and responses concurrently over a single TCP connection
 - B. HTTP/3 can only be used with HTTPS
 - C. HTTP/2 is backward compatible with HTTP/1.1
-- D. HTTP/1.1 requires multiple TCP connections to process multiple requests simultaneously
+- D. HTTP/1.0 requires multiple TCP connections to process multiple requests simultaneously
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q28-event-loop/)
- 
-Further reading: 
- - https://www.section.io/engineering-education/http3-vs-http2/
- - https://www.cloudflare.com/learning/performance/http2-vs-http1.1/
- - https://www.cloudflare.com/learning/performance/what-is-http3/
+<summary><b>Answer</b></summary>
+<br />
+
+All of them are correct.
+
+![HTTP](assets/http.webp)
+
+- A. HTTP/2 allows multiple requests and responses concurrently over a single TCP connection.
+
+  Explanation: HTTP/2 introduces multiplexing, allowing multiple requests and responses to be sent concurrently over a single TCP connection. This improves efficiency compared to HTTP/1.1, where each request typically required a separate connection.
+
+- B. HTTP/3 can only be used with HTTPS.
+
+  Explanation: HTTP/3 relies on the QUIC transport protocol, adn it is designed to work exclusively over UDP. Since most browsers restrict the usage of QUIC to secure connections (HTTPS), this statement is correct.
+
+- C. HTTP/2 is backward compatible with HTTP/1.1.
+
+  Explanation: HTTP/2 is designed to be backward compatible with HTTP/1.1. This means that if a client or server does not support HTTP/2, the communication can fall back to using HTTP/1.1 without issues.
+
+- D. HTTP/1.0 requires multiple TCP connections to process multiple requests simultaneously.
+
+  Explanation: In HTTP/1.0, each request typically requires a separate TCP connection. This can lead to inefficiencies, especially when many small resources need to be loaded, as each connection has its associated overhead. In contrast, HTTP/2's multiplexing allows multiple requests to be sent concurrently over a single connection, improving performance.
 
 </details>
 
