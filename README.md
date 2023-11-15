@@ -1253,24 +1253,40 @@ Access-Control-Expose-Headers: X-Custom-Header
 Access-Control-Max-Age: 600
 ```
 
-- A. A preflight request is required 
-- B. Only requests from `https://www.website.com` are allowed 
-- C. Requests with cookies are allowed 
+- A. A preflight request is required
+- B. Only requests from `https://www.website.com` are allowed
+- C. Requests with cookies are allowed
 - D. The actual response is cached for 600ms
-- E. `X-Custom-Header` will be the only included response header 
+- E. `X-Custom-Header` will be the only included response header
 - F. `GET`, `POST`, `PATCH` and `PUT` methods are allowed, but not `DELETE`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q27-cors-headers/)
- 
-Further reading: 
- - https://www.w3.org/TR/2020/SPSD-cors-20200602/
- - https://fetch.spec.whatwg.org/#http-cors-protocol
- - https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+<summary><b>Answer</b></summary>
+<br />
+
+- B. Only requests from `https://www.website.com` are allowed
+
+Explanation:
+
+![CORS](assets/cors.webp)
+
+- `Access-Control-Allow-Origin: https://www.website.com`: This header specifies that only requests from `https://www.website.com` are allowed. This is known as the "Allowed Origins" header. It restricts cross-origin requests to only those coming from the specified origin.
+
+- `Access-Control-Allow-Headers: Content-Type`: This header allows the inclusion of the `Content-Type` header in the actual request. It doesn't restrict other headers explicitly but specifies that the `Content-Type` header is permitted.
+
+- `Access-Control-Allow-Methods: *`: This header allows any HTTP method (e.g., `GET`, `POST`, `PUT`, `DELETE`). The `*` wildcard means that all methods are allowed. This header is known as the "Allowed Methods" header.
+
+- `Access-Control-Expose-Headers: X-Custom-Header`: This header indicates that the response may include the `X-Custom-Header`, and the browser should expose it to the requesting client-side code.
+
+- `Access-Control-Max-Age: 600`: This header specifies that the results of a preflight request (if required) can be cached for 600 seconds (10 minutes). This reduces the number of preflight requests.
+
+In summary:
+
+By default our browsers implement something called the same origin policy, which prevents any cross origin requests. CORS actually and extension of that same origin policy but instead it allows us to do cross-origin resource sharing. We are going from `https://www.website.com` to `https://api.other.com/posts` and with CORS it also adds the origin header, so this request came from `https://www.website.com` and the server if it has the CORS headers configuration will then respond it has CORS with the access control allow origin. And this header essentially says okay, this is fine, responses are allowed, requests from this origin are allowed to read the resource I'm sending to you. CORS has a checklist does the access control allow origin match the origin of the request. If it matches then the resource is allowed to be accessed by the browser. If not then the resource will be blocked.
+
+**It's important to remember that CORS is in your browsers and in your user-agent. It is not on server. It's just a browser security feature that make sure that when you're fetching a resource or doing anything it's from a secure origin or they allow that response to be read**.
+
+![Preflight](assets/preflight.webp)
 
 </details>
 
