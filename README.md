@@ -1123,7 +1123,7 @@ Explanation:
 
 ---
 
-### 24. What is true about the following header? 
+### 24. What is true about the following header?
 
 ```js
 Strict-Transport-Security: max-age=31536000; includeSubdomains;
@@ -1135,15 +1135,34 @@ Strict-Transport-Security: max-age=31536000; includeSubdomains;
 - D. Insecure requests to subdomains are allowed
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q24-transport-security)
- 
-Further reading: 
- - https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html
- - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
+<summary><b>Answer</b></summary>
+<br />
+
+- A. The header enforces HTTPS for one year on the domain and its subdomains
+- C. The `max-age` is refreshed every time the browser reads the header
+
+Explanation:
+
+![HSTS](assets/hsts.png)
+
+```bash
+$ curl --head http://github.com
+
+HTTP/1.1 301 Moved Permanently
+Location: https://github.com/
+```
+
+- `max-age=31536000`: The `max-age` directive specifies the time, in seconds, during which the user agent should regard the host (and its subdomains) as a known HSTS(Strict-Transport-Security) host. In this case, it's set to one year (60 seconds * 60 minutes * 24 hours * 365 days).
+
+- `includeSubdomains`: The `includeSubdomains` directive indicates that the HSTS policy should also be applied to all subdomains of the host.
+
+So, the given header enforces HTTPS for one year on the domain and all of its subdomains. Once a user agent sees this header, it will remember to access the site and its subdomains over HTTPS for the specified duration.
+
+- B. When `max-age` expires, the browser will continue to enforce HTTPS because the same cycle will repeat again. Ref: Diagram
+
+- C. The `max-age` value indicates the duration of the HSTS policy, and it refresh every time the browser reads the header, so if a user visits https://github.com at least once every year, they'll be indefinitely protected by HSTS.
+
+- D. The `includeSubdomains` directive ensures that the HSTS policy is applied to all subdomains, and insecure requests are not allowed.
 
 </details>
 
