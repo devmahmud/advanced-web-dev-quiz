@@ -1014,23 +1014,24 @@ window.fetch = function(url, options) {
 
 1. temporarily render an invisible font until the custom font has been downloaded
 2. use a fallback font while the custom font is downloading, switch to the custom font when available
-3. only use the custom font if it is available, otherwise use a fallback font 
+3. only use the custom font if it is available, otherwise use a fallback font
 4. allows the browser to determine the most appropriate behavior for font loading
 5. use the custom font if it is available, use a fallback font if the custom font is not available
 
-
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q21-font-strategies/)
- 
-Further reading: 
- - https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
-- https://css-tricks.com/almanac/properties/f/font-display/
- 
- 
+<summary><b>Answer</b></summary>
+<br />
+
+- A. `font-display: block`: 1. temporarily render an invisible font until the custom font has been downloaded
+- B. `font-display: swap`: 5. use the custom font if it is available, use a fallback font if the custom font is not available
+- C. `font-display: fallback`: 2. use a fallback font while the custom font is downloading, switch to the custom font when available
+- D. `font-display: optional`: 3. only use the custom font if it is available, otherwise use a fallback font
+- E. `font-display: auto`: 4. allows the browser to determine the most appropriate behavior for font loading
+
+Explanation:
+
+![Font Display](assets/font-display.webp)
+
 </details>
 
 ---
