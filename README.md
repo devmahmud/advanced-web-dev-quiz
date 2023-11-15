@@ -1178,17 +1178,31 @@ So, the given header enforces HTTPS for one year on the domain and all of its su
 - F. `position: absolute`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q25-render-layers)
- 
-Further reading: 
- - https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/
- - https://surma.dev/things/forcing-layers/
- - https://web.dev/speed-layers/
- - https://www.chromium.org/developers/design-documents/graphics-and-skia/
+<summary><b>Answer</b></summary>
+<br />
+
+- B. `translate3d: (0, 0, 0)`
+- C. `will-change: transform`
+- D. `transform: rotate(45deg)`
+- E. `position: fixed`
+
+Explanation:
+
+```css
+
+will-change: transform
+position: fixed
+opacity
+filter
+transform: translateZ(0)
+backface-visibility: hidden
+will-change: opacity
+<video>
+WebGL <canvas>
+transform: rotateY(45deg)
+```
+
+etc.
 
 </details>
 
