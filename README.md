@@ -1272,6 +1272,8 @@ Explanation:
 
 - `Access-Control-Allow-Origin: https://www.website.com`: This header specifies that only requests from `https://www.website.com` are allowed. This is known as the "Allowed Origins" header. It restricts cross-origin requests to only those coming from the specified origin.
 
+- Cookies are not allowed because `Access-Control-Allow-Credentials` is not set
+
 - `Access-Control-Allow-Headers: Content-Type`: This header allows the inclusion of the `Content-Type` header in the actual request. It doesn't restrict other headers explicitly but specifies that the `Content-Type` header is permitted.
 
 - `Access-Control-Allow-Methods: *`: This header allows any HTTP method (e.g., `GET`, `POST`, `PUT`, `DELETE`). The `*` wildcard means that all methods are allowed. This header is known as the "Allowed Methods" header.
@@ -1312,19 +1314,20 @@ Promise.resolve().then(() => Promise.resolve().then(() => console.log(4)))
 - D. `2` `3` `1` `4` 
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q28-event-loop/)
- 
-Further reading: 
- - https://tc39.es/ecma262/#sec-promise-objects
- - https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
- - https://web.dev/promises/
- - https://javascript.info/promise-basics
- - https://javascript.info/microtask-queue
+<summary><b>Answer</b></summary>
+<br />
+
+C. `2` `3` `4` `1`
+
+Explanation:
+
+1. `console.log(2)` is the first statement executed because it's part of the immediately-invoked function expression (IIFE), and the IIFE is invoked as soon as the script is executed.
+
+2. `await Promise.resolve()` pauses the execution until the promise is resolved, but in this case, it's immediately resolved. So, `console.log(3)` is executed after the promise is resolved.
+
+3. `Promise.resolve().then(() => Promise.resolve().then(() => console.log(4)))` schedules a microtask. When the microtask queue is processed, it logs `4`.
+
+4. `setTimeout(() => console.log(1))` schedules a task to log `1` after a timeout. This runs after the microtask queue is cleared.
 
 </details>
 
