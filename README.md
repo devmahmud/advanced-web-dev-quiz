@@ -1396,18 +1396,18 @@ objB.baz();
 - D. `A` `undefined` `A`
 - E. `B` `undefined` `B`
 
-
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q28-event-loop/)
- 
-Further reading: 
- - https://tc39.es/ecma262/#sec-function-environment-records-getthisbinding
- - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
- - https://javascript.info/object-methods
+<summary><b>Answer</b></summary>
+<br />
+
+- B. `B` `A` `A`
+
+Explanation:
+
+1. `objB.foo();`: Calls the `foo` method of `objB`, which logs the `type` property of `objB`. The output is `B`.
+
+2. `objB.bar();`: Calls the `bar` method of `objB`, which is an arrow function that invokes `objA.foo()`. Since arrow functions do not have their own `this` context, `this` inside `objA.foo()` refers to the enclosing scope, which is `objB`. Therefore, it logs the `type` property of `objB`. The output is `A`.
+
+3. `objB.baz();`: Calls the `baz` method of `objB`, which invokes `objA.foo()`. Similar to the previous case, `this` inside `objA.foo()` refers to the calling object (`objB`). It logs the `type` property of `objB`. The output is also `A`.
 
 </details>
-
