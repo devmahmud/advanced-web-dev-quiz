@@ -1048,19 +1048,28 @@ Set-Cookie: my-cookie="value"; Domain="website.com"; Secure; HttpOnly;
 - D. This cookie will be sent when navigating from another website to `www.website.com`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q22-cookie-policy-header/)
- 
-Further reading: 
- - https://httpwg.org/http-extensions/draft-ietf-httpbis-rfc6265bis.html#name-overview
- - https://resources.infosecinstitute.com/topic/securing-cookies-httponly-secure-flags/
- - https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
- - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
+<summary><b>Answer</b></summary>
+<br />
 
- 
+- C. This cookie gets treated like a session cookie
+- D. This cookie will be sent when navigating from another website to `www.website.com`
+
+Explanation:
+
+![Cookie](assets/cookie.png)
+
+- A. The `Domain` attribute is set to `"website.com"`, which means the cookie is accessible from subdomains of `website.com`, including both `www.website.com` and `blog.website.com`. If the domain was not specified, this cookie would only be available on the exact domain that that cookie sets.
+
+Also there is no `Same-Site` attribute set, it it will be defaulted to `Same-Site=Lax;` which means this cookie will be sent form top level navigations to that site. If we were on `https://www.otherwebsite.com` and we type `https://website.com`, in that request the cookie will still be set. It only applies to those top level navigations and as long as it is a get request and the connection is secure.
+
+We also have `Same-Site=None`, which basically says that you and any website can have it. Also `Same-Site=Strict` which only allows the cookie to be read by the same site.
+
+- B. It cannot be set client-side at all, because we have the **HttpOnly** sot it can't be accessed by client side. `document.cookie`. It only be included in HTTP requests.
+
+- C. The given `Set-Cookie` header lacks explicit instructions regarding the duration of the cookie (e.g., no `Expires` or `Max-Age` attribute). In the absence of a specified expiration, the cookie becomes a session cookie, which means it will be stored temporarily and expire when the user closes their browser.
+
+- D. The `Secure` attribute is present, indicating that the cookie should only be sent over HTTPS connections. If a user navigates to `www.website.com` from another website using a secure connection (HTTPS), the cookie will be included in the request. It won't be sent if the connection is not secure. This helps enhance the security of the cookie by ensuring it's transmitted over encrypted connections.
+
 </details>
 
 ---
