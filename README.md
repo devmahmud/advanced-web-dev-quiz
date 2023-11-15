@@ -1098,18 +1098,27 @@ We also have `Same-Site=None`, which basically says that you and any website can
 - E. `ul:first-child + li:first-child`
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q23-css-pseudo-selector)
- 
-Further reading: 
- - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors
- - https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
- - https://www.w3.org/TR/selectors-4/#pseudo-classes
+<summary><b>Answer</b></summary>
+<br />
 
- 
+- A. `ul:first-child > li`
+- C. `ul:first-child > li:first-child`
+
+Explanation:
+
+> `>` Target combinator,
+> `+` Adjacent sibling combinator
+
+- A. `ul:first-child > li`: This selector targets the direct child `<li>` of the first `<ul>`. The `ul:first-child` part selects the first `<ul>`, and `> li` then selects the direct child `<li>`. So, it matches the first list item `<li>One</li>`.
+
+- B. `ul:first-child + li`: This selector targets an `<li>` that is an adjacent sibling of the first `<ul>`. However, in the provided HTML structure, the first `<ul>` has a nested `<ul>` as its sibling, not an `<li>`. Therefore, this selector won't match anything in the given markup.
+
+- C. `ul:first-child > li:first-child`: This selector targets the first child `<li>` of the first `<ul>`. The `ul:first-child` part selects the first `<ul>`, and `> li:first-child` then specifically selects the first child `<li>`. Again, it matches the first list item `<li>One</li>`.
+
+- D. `ul:first-of-type > li:first-of-type`: This selector targets the first `<ul>` and then selects the first child `<li>` of any `<ul>`. It doesn't specifically target the first child `<li>` of the first `<ul>`. It will match the first list item `<li>One</li>`, but it may also match other first `<li>` elements in subsequent `<ul>` elements.
+
+- E. `ul:first-child + li:first-child`: This selector targets the first child `<li>` that is an adjacent sibling of the first `<ul>`. However, in the given HTML structure, the first `<ul>` has a nested `<ul>` as its sibling, not an `<li>`. Therefore, this selector won't match anything in the provided markup.
+
 </details>
 
 ---
