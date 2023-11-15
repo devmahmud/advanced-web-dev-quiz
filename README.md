@@ -1216,20 +1216,28 @@ etc.
 - D. AVIF
 
 1. Both lossy and lossless compression, supports HDR and WCG, supports transparency
-2. Both lossy and lossless compression, supports transparency, supports progressive rendering 
+2. Both lossy and lossless compression, supports transparency, supports progressive rendering
 3. Lossless compression, high quality, supports transparency, larger file size
 4. Lossy compression, supports progressive rendering
 
 <details>
-<summary>💡 <b>Resources</b></summary>
- <br />
- 
- Answer:
- - [**Watch Answer & Explanation**](https://frontendmasters.com/courses/web-dev-quiz/q26-image-formats/)
- 
-Further reading: 
- - https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
-- https://www.smashingmagazine.com/2021/09/modern-image-formats-avif-webp/
+<summary><b>Answer</b></summary>
+<br />
+
+- A. JPEG: 4. Lossy compression, supports progressive rendering
+- B. PNG: 3. Lossless compression, high quality, supports transparency, larger file size
+- C. WebP: 2. Both lossy and lossless compression, supports transparency, supports progressive rendering
+- D. AVIF: 1. Both lossy and lossless compression, supports HDR and WCG, supports transparency
+
+Explanation:
+
+1. **JPEG (A)**: JPEG is a lossy compression format commonly used for photographs and images with gradient colors. It supports progressive rendering, allowing a low-quality version of the image to be displayed quickly, followed by a higher-quality version.
+
+2. **PNG (B)**: PNG is a lossless compression format often used for images with transparency. It provides high quality but can result in larger file sizes compared to some lossy formats.
+
+3. **WebP (C)**: WebP is a modern image format developed by Google. It supports both lossy and lossless compression, making it versatile. It also supports transparency and features like HDR (High Dynamic Range) and WCG (Wide Color Gamut).
+
+4. **AVIF (D)**: AVIF is a relatively new image format that supports both lossy and lossless compression. It excels in providing high compression efficiency while maintaining image quality. It also supports transparency and progressive rendering.
 
 </details>
 
